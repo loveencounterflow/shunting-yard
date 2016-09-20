@@ -5,7 +5,7 @@
 
 Turning infix notation to postfix notation (Reverse Polish Notation, RPN):
 
-```
+```coffee
 SHUNTINGYARD.parse g, "3 + 4"
 
 [ { s: '3', idx: 1, t: 'number' },
@@ -13,7 +13,7 @@ SHUNTINGYARD.parse g, "3 + 4"
   { s: '+', idx: 3, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "a + 4"
 
 [ { s: 'a', idx: 1, t: 'name' },
@@ -21,7 +21,7 @@ SHUNTINGYARD.parse g, "a + 4"
   { s: '+', idx: 3, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "3 + b"
 
 [ { s: '3', idx: 1, t: 'number' },
@@ -29,7 +29,7 @@ SHUNTINGYARD.parse g, "3 + b"
   { s: '+', idx: 3, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "a + b"
 
 [ { s: 'a', idx: 1, t: 'name' },
@@ -37,7 +37,7 @@ SHUNTINGYARD.parse g, "a + b"
   { s: '+', idx: 3, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "3 + 6 * 7"
 
 [ { s: '3', idx: 1, t: 'number' },
@@ -47,7 +47,7 @@ SHUNTINGYARD.parse g, "3 + 6 * 7"
   { s: '+', idx: 3, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "3 * 6 + 7"
 
 [ { s: '3', idx: 1, t: 'number' },
@@ -57,7 +57,7 @@ SHUNTINGYARD.parse g, "3 * 6 + 7"
   { s: '+', idx: 7, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "3 * ( 6 + 7 )"
 
 [ { s: '3', idx: 1, t: 'number' },
@@ -67,7 +67,7 @@ SHUNTINGYARD.parse g, "3 * ( 6 + 7 )"
   { s: '*', idx: 3, t: 'operator', a: 'left', p: 2 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "() 3 * ( 6 + 7 )"
 
 [ { s: '3', idx: 4, t: 'number' },
@@ -77,7 +77,7 @@ SHUNTINGYARD.parse g, "() 3 * ( 6 + 7 )"
   { s: '*', idx: 6, t: 'operator', a: 'left', p: 2 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "(3) * ( 6 + 7 )"
 
 [ { s: '3', idx: 2, t: 'number' },
@@ -87,7 +87,7 @@ SHUNTINGYARD.parse g, "(3) * ( 6 + 7 )"
   { s: '*', idx: 5, t: 'operator', a: 'left', p: 2 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "3*6^7"
 
 [ { s: '3', idx: 1, t: 'number' },
@@ -97,7 +97,7 @@ SHUNTINGYARD.parse g, "3*6^7"
   { s: '*', idx: 2, t: 'operator', a: 'left', p: 2 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "6^7*3"
 
 [ { s: '6', idx: 1, t: 'number' },
@@ -107,7 +107,7 @@ SHUNTINGYARD.parse g, "6^7*3"
   { s: '*', idx: 4, t: 'operator', a: 'left', p: 2 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "6+7+3"
 
 [ { s: '6', idx: 1, t: 'number' },
@@ -117,7 +117,7 @@ SHUNTINGYARD.parse g, "6+7+3"
   { s: '+', idx: 4, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "6^7^3"
 
 [ { s: '6', idx: 1, t: 'number' },
@@ -127,7 +127,7 @@ SHUNTINGYARD.parse g, "6^7^3"
   { s: '^', idx: 2, t: 'operator', a: 'right', p: 3 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "6 ^ 7 + 3"
 
 [ { s: '6', idx: 1, t: 'number' },
@@ -137,7 +137,7 @@ SHUNTINGYARD.parse g, "6 ^ 7 + 3"
   { s: '+', idx: 7, t: 'operator', a: 'left', p: 1 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "6 ^ [ 7 + 3 ]"
 
 [ { s: '6', idx: 1, t: 'number' },
@@ -147,7 +147,7 @@ SHUNTINGYARD.parse g, "6 ^ [ 7 + 3 ]"
   { s: '^', idx: 3, t: 'operator', a: 'right', p: 3 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "a = 1"
 
 [ { s: 'a', idx: 1, t: 'name' },
@@ -155,7 +155,7 @@ SHUNTINGYARD.parse g, "a = 1"
   { s: '=', idx: 3, t: 'operator', a: 'right', p: 0 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "a = b = c + 1"
 
 [ { s: 'a', idx: 1, t: 'name' },
@@ -167,7 +167,7 @@ SHUNTINGYARD.parse g, "a = b = c + 1"
   { s: '=', idx: 3, t: 'operator', a: 'right', p: 0 } ]
 ```
 
-```
+```coffee
 SHUNTINGYARD.parse g, "g = ( a + b ) * c ^ ( d - e )"
 
 [ { s: 'g', idx: 1, t: 'name' },

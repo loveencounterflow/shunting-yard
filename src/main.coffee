@@ -251,10 +251,10 @@ LTSORT                    = require 'ltsort'
   info '\n' + rpr @parse g, "6^7^3"
   info '\n' + rpr @parse g, "6 ^ 7 + 3"
   info '\n' + rpr @parse g, "6 ^ [ 7 + 3 ]"
-  # info '\n' + rpr @parse g, "6 ^ ( 7 + 3 ]"
   info '\n' + rpr @parse g, "a = 1"
   info '\n' + rpr @parse g, "a = b = c + 1"
   info '\n' + rpr @parse g, "g = ( a + b ) * c ^ ( d - e )"
+  # info '\n' + rpr @parse g, "6 ^ ( 7 + 3 ]"
 
 
 ############################################################################################################
